@@ -1,0 +1,66 @@
+
+
+
+
+	<!--===============================================================================================-->
+		
+	<p-menubar  [model]="general" *ngIf="loggedIn" autoZIndex="false"  [autoDisplay]="false"  >
+            
+               
+      <div class="flexbox row" >                      
+       <div class=" float-right mr-3 mt-2">  <h6 class="text-secondary">Usuario : {{username}}</h6></div>                                             
+			  
+			  <div class="button mr-2"> 
+                <i #aa (click)="cerrarSesion()" class="fas fa-power-off fa-2x my-hover nav-links"></i>
+			</div>
+		</div> 
+  </p-menubar> 
+  
+  
+  
+  
+  <div class="wrapper fadeInDown" *ngIf="!loggedIn">
+  
+<div style="background-color: #666666;">
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100"> 
+				<form [formGroup]="loginForm"  class="login100-form validate-form" (ngSubmit)="onSubmit()">
+					<span class="login100-form-title p-b-43">
+						Bienvenido
+					</span>
+					
+					
+					<div class="wrap-input100 validate-input" data-validate = "Usuario válido es requerido">
+						<input class="input100" type="text" name="email" formControlName="username"   autofocus>
+						<span  class="focus-input100" ></span>
+						<span   class="label-input100" >Usuario</span>
+						
+					</div>
+					
+					
+					<div class="wrap-input100 validate-input" data-validate="Contraseña es requerida">
+						<input class="input100" type="password" name="pass" formControlName="password" >
+						<span class="focus-input100"></span>
+						<span class="label-input100" >Contraseña</span>
+					</div>
+
+				
+			
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Ingresar
+						</button>
+					</div>
+					
+					
+				</form>
+
+				<div class="login100-more" style="background-image: url(assets/images/bg-01.png);">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

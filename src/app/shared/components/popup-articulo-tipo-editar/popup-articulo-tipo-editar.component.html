@@ -1,0 +1,22 @@
+     
+            <form class="col-12"  [formGroup]="updateDataForm" >
+              <div class="row">
+ 
+                      <div class="form-group ">
+                              <label  >Tipo</label>
+                              <input class="form-control col-md-12 form-control-sm" formControlName="tipo_articulo"  autofocus  />
+                              <div *ngIf="updateDataForm.controls.tipo_articulo.errors?.required && updateDataForm.controls.tipo_articulo.touched" class="error">
+                                      * Este campo es requerido
+                              </div>
+                      </div>
+                  
+      </div>
+           
+          </form>
+          <p-footer>
+                  <div class="ui-dialog-buttonpane ui-helper-clearfix"> 
+                          <button *ngIf="!newPopItem" [disabled]="!updateDataForm.valid" [formGroup]="updateDataForm" class="btn btn-primary" type="submit" (click)="guardarDatos()" >Guardar</button>
+                          
+                  </div>
+              </p-footer>
+     

@@ -1,0 +1,69 @@
+     
+            <form class="col-12"  [formGroup]="updateDataForm" >
+              <div class="row">
+                  <div class="col-4">
+                      <div class="form-group ">
+                              <label  >Articulo</label>
+                              <input class="form-control col-md-12 form-control-sm" formControlName="nombre"  autofocus  />
+                              <div *ngIf="updateDataForm.controls.nombre.errors?.required && updateDataForm.controls.nombre.touched" class="error">
+                                      * Este campo es requerido
+                              </div>
+                      </div>
+                      <div class="form-group">
+                              <label  >Código</label>
+                              <input class="form-control col-md-12 form-control-sm" formControlName="codigo"   />
+                              <div *ngIf="updateDataForm.controls.codigo.errors?.required && updateDataForm.controls.codigo.touched" class="error">
+                                              * Este campo es requerido
+                              </div>
+                      </div>                   
+                  
+                    <div class="form-group">
+                      <label  >Precio</label>
+                      <input class="form-control col-md-12 form-control-sm" formControlName="precio"    />
+                      <div *ngIf="updateDataForm.controls.precio.errors?.required && updateDataForm.controls.precio.touched" class="error">
+                                      * Este campo es requerido
+                      </div>
+                  </div>
+          </div>
+
+
+          <div class="col-4">
+            <div class="form-group ">
+              <div >
+                  <label  >Tipo articulo</label>
+                </div> 
+              <div class=" input-group input-group-sm mb-3">
+                  <input (keyup.enter)="buscarTipoArticulo()" placeholder="Buscar tipo articulo" class="form-control col-md-12 form-control-sm" formControlName="tipo_articulo"   />                  
+                  <div class="input-group-append">
+                    <span class="input-group input-group-text form-control-sm">
+                      <a  (click)="buscarTipoArticulo()">
+                          <img class="pointer float-left" src="assets/icons/grey/outline_search_black_18dp.png" width="24px" height="24px"  >
+                      </a>
+                  </span>
+                  </div>
+              </div>                                 
+          </div>
+
+                          
+                     
+                      <div class="form-group ui-g-12">
+
+                        <label   >Estado</label>
+                        <div class="row">
+                          <div class="col-4"><p-radioButton name="groupname22" class="text-info" formControlName="estado_id"   value="1" label="EN STOCK"  inputId="opt12"></p-radioButton></div>
+                          <div class="col-4"><p-radioButton name="groupname22" class="text-info" formControlName="estado_id"   value="2" label="USADO"  inputId="opt22"></p-radioButton></div>
+                          
+                        </div>                       
+                    </div>
+                
+          </div>
+      </div>
+           
+          </form>
+          <p-footer>
+                  <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                          <button *ngIf="!newPopItem" [disabled]="!updateDataForm.valid" [formGroup]="updateDataForm" class="btn btn-primary" type="submit" (click)="guardarDatos()" >Guardar</button>
+                          
+                  </div>
+              </p-footer>
+     
