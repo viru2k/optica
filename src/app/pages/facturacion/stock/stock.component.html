@@ -1,3 +1,130 @@
-<p>
-  stock works!
-</p>
+
+<div >
+  <app-loading *ngIf="loading"> </app-loading> 
+ 
+</div>
+<p-toast (life)="100" styleClass="custom-toast" [style]="{marginTop: '100px'}"></p-toast>
+
+<div class="row m-1" >
+    
+  <div class="row m-1" role="toolbar" aria-label="Toolbar with button groups">
+      <div  class="input-group input-group-sm ">
+              <form  [formGroup]="DateForm">
+              <div class="btn-group " role="group">
+                      <span class="pr-1 pt-1"><h6>Fecha:</h6></span>
+          <p-calendar [inputStyle]="{'height':'29.1px'}"  [showTime]="true"  class="mr-2 " formControlName="fecha_desde"  (onSelect)="actualizarFechaDesde($event)" tabindex="0"  [dataType]="yy-mm-dd" [locale]="es" dateFormat="dd/mm/yy"   [readonlyInput]="true">
+             <ng-template pTemplate="date" let-date>
+                  <span    style="border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">{{date.day}}</span>
+              </ng-template> 
+            </p-calendar>
+            
+                        
+          <div class=" ml-2 row" >
+                  <div class="col-8 row mr-4 ">
+
+                    
+                      <div class=" col-8 input-group input-group-sm ">
+                          <input  (keyup.enter)="buscarComprobante()" class="form-control col-md-12 form-control-sm" formControlName="tipo" placeholder="Comprobante"  />   
+                      
+                          <div class="input-group-append">
+                            <span class=" input-group-text form-control-sm">
+                              <a  (click)="buscarComprobante()">
+                                  <img class="pointer float-left" src="assets/icons/grey/outline_search_black_18dp.png" width="24px" height="24px"  >
+                              </a>
+                          </span>
+                          </div>
+                      </div>     
+
+
+                                <div class="col-4 input-group input-group-sm ">         
+                                    
+                                    <input  placeholder="numero" class="form-control col-md-12 form-control-sm" formControlName="proximo_numero"  />        
+                                </div> 
+                    </div>                  
+                <div class=" col-3 ">
+                <button    class="btn  btn-success btn-sm float-right mr-2" (click)="GuardarComprobante()" >Guardar stock</button>       
+              </div>                                                     
+                  </div>
+          
+      </div>
+           
+              </form>      
+ 
+      </div>
+
+      
+    
+  </div>
+
+  <p-table  #dt class="pt-2 m-2"  tableStyleClass="prime-table" selectionMode="single" [columns]="cols" [value]="elementos"  [(selection)]="selecteditems" columnResizeMode="expand" [responsive]="true"
+  scrollHeight="500px" [scrollable]="true"  (onFilter)="filtered($event)"  >
+  <ng-template pTemplate="caption">
+    <div class="row">
+            <div class="col-md-12 row" style="text-align:left ">
+              <div class="pr-2 pl-2">    <button    class="btn  btn-secondary btn-sm float-right mr-2"  (click)="agregarArticulo()" >Agregar articulo</button>  </div>            
+            </div>
+
+ </div>
+</ng-template>
+
+             <ng-template pTemplate="header" let-columns >
+            
+                        <tr >
+                             
+                          <th  *ngFor="let col of columns" [pSortableColumn]="col.field"  [ngStyle]="{'width': col.width}">
+                              {{col.header}}
+                              <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                          </th> 
+                          <th style="width: 3em">
+                                  <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                          </th>
+                      </tr> 
+                      <tr>
+                      <th *ngFor="let col of columns" [ngSwitch]="col.field"  >
+                          <input style=" font-size: 12px;" class="form-control col-md-12 form-control-sm" *ngSwitchCase="'articulo_codigo'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                          <input style=" font-size: 12px;"  class="form-control col-md-12 form-control-sm" *ngSwitchCase="'articulo_nombre'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                          <input style=" font-size: 12px;" class="form-control col-md-12 form-control-sm" *ngSwitchCase="'articulo_tipo'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                          <input style=" font-size: 12px;" class="form-control col-md-12 form-control-sm" *ngSwitchCase="'precio'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">                      
+                          
+                          
+                       
+                          
+                      </th>
+                      <th></th>
+                  </tr>
+              </ng-template>
+            
+      <ng-template pTemplate="body" let-elementos  >
+          <tr style="height:20px"  >
+                 
+                  <td style="width: 6%" >                   
+                      <a     (click)="accion($event,op,elementos)"    ><i class="far fa-edit fa-2x icon-color-purple my-hover"></i></a>
+                   
+                  </td>
+                  <td style="width: 15%">{{elementos.articulo_codigo}}</td>
+                  <td style="width: 30%">{{elementos.articulo_nombre}}</td>
+                  <td style="width: 24%">{{elementos.articulo_tipo}}</td>
+                  <td style="width: 10%">{{elementos.precio}}</td>                                                                    
+                  <td style="width: 10%">{{elementos.cantidad}}</td>    
+                  <td style="width: 10%">{{elementos.total_facturado}}</td>    
+                              
+                  <td style="width: 3em">
+                          <p-tableCheckbox [value]="elementos"></p-tableCheckbox>
+                      </td>
+          </tr>
+      </ng-template>
+     
+  </p-table>
+</div>
+
+
+
+<p-overlayPanel #op [showTransitionOptions]="'400ms'" [hideTransitionOptions]="'300ms'"  [dismissable]="true" >                          
+    <span>   <a class="nav-link azul text-info  my-hover" (click)="editarRegistro(selecteditems)">Editar registro</a></span>    
+    <span> <hr></span>
+    <span>   <a class="nav-link azul text-info my-hover" (click)="eliminarRegistro(selecteditems)">Eliminar registro</a></span>
+  </p-overlayPanel>  
+  
+  
+  
+  

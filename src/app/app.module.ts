@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-
+import { registerLocaleData, LocationStrategy, HashLocationStrategy, CurrencyPipe, DecimalPipe } from '@angular/common';
 import localeEsAR from '@angular/common/locales/es-AR';
 import { AutofocusModule } from 'angular-autofocus-fix'; 
 import { ErrorInterceptor } from './helpers/error.interceptor';
@@ -128,7 +128,7 @@ import { PopupArticuloTipoEditarComponent } from './shared/components/popup-arti
     PopupPacienteComponent,
     PopupArticuloTipoComponent,
     PopupArticuloTipoEditarComponent],
-  providers: [{ provide: LOCALE_ID, useValue: 'es-Ar' },{
+  providers: [CurrencyPipe,{ provide: LOCALE_ID, useValue: 'es-Ar' },{
     provide: HTTP_INTERCEPTORS,
     useFactory: function(injector: Injector) {
         return new JwtInterceptor(injector);

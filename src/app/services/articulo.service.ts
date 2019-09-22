@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 import { Comprobante } from './../models/comprobante.model';
 import { Articulo } from './../models/articulo.model';
 import { ArticuloTipo } from '../models/articulo_tipo.model';
+import { ArticuloMovimiento } from './../models/articulo-movimiento.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class ArticuloService {
   constructor(public http: HttpClient) { }
 
   getMovimientoByComprobanteNro(id:number){
-    return this.http.get<Comprobante[]>(this.url+'facturacion/comprobante/by/numero?id='+id);
+    return this.http.get<ArticuloMovimiento[]>(this.url+'facturacion/comprobante/by/numero?id='+id);
   }
 
   getMovimientoByComprobanteFecha(fecha_desde:String, fecha_hasta:string){
@@ -72,5 +73,10 @@ export class ArticuloService {
     return this.http.put<any>(this.url+'articulo/'+id, articulo);
   }
 
+  anularComprobante(comprobante_id:string, fecha_baja:string){
+    return this.http.get<any>(this.url+'facturacion/articulo/anular?'+comprobante_id+'&fecha_baja='+fecha_baja);
+  }
 
+
+  
 }

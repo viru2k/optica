@@ -18,6 +18,11 @@ export class ArticuloMovimiento {
     public usuario_alta_id:string;
     public comprobante_tipo_id:string;
     public comprobante_tipo:string;
+    public articulo_nombre:string;
+    public articulo_codigo:string;
+    public articulo_tipo:string;
+    public cantidad:number;
+
     constructor( 
         id:string,
         articulo_id:string,
@@ -37,6 +42,10 @@ export class ArticuloMovimiento {
         usuario_alta_id:string,
         comprobante_tipo_id:string,
         comprobante_tipo:string,
+        articulo_nombre:string,
+        articulo_codigo:string,
+        articulo_tipo:string,
+        cantidad:number
         ) {
 
         this.id = id;
@@ -57,7 +66,10 @@ export class ArticuloMovimiento {
         this.usuario_alta_id = usuario_alta_id;
         this.comprobante_tipo_id = comprobante_tipo_id;
         this.comprobante_tipo = comprobante_tipo;
-
+        this.articulo_nombre = articulo_nombre;
+        this.articulo_codigo = articulo_codigo;
+        this.articulo_tipo = articulo_tipo;
+        this.cantidad = cantidad;
 
    }
 }
