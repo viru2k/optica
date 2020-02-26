@@ -12,7 +12,7 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
         console.log(URL_SERVICIOS+"oauth/token");
-       this.usuario = new User("","","","","",username,password,[]);
+       this.usuario = new User("","","","","",username,password,[],'');
        console.log(this.usuario);
         return this.http.post<User>(URL_SERVICIOS+"oauth/token",this.usuario);
            /*  .pipe(map(user => {

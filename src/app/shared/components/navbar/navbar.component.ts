@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
   error = '';
   notificaciones:boolean;
   chats:boolean;
-
+  local:string ;
   constructor(
     private messageService: MessageService ,public dialogService: DialogService, 
     private authenticationService: AuthenticationService,
@@ -130,9 +130,11 @@ export class NavbarComponent implements OnInit {
   
       /*======== FIN JQUERY DEL LOGUIN =========*/
 
+    //  this.local = 'Capital';
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      local : ['', Validators.required]
   });
 
   console.log(this.f.username.value);
@@ -144,6 +146,7 @@ if(currentUser['access_token'] != ''){
   console.log('usuario logueado');
   this.loggedIn = true;
      this.username = userData['username'];
+     this.local = userData['local'];
      console.log(userData['access_list']);
      this.asignarModulos(userData['access_list']);
      this.menuList();
@@ -209,8 +212,9 @@ onSubmit() {
       .subscribe(
           data => {
             console.log(data);
+            console.log(this.loginForm.value.local);
             this.user = data;
-            let us = new User("","","","","",this.f.username.value,this.f.password.value,[]);
+            let us = new User("","","","","",this.f.username.value,this.f.password.value,[], this.loginForm.value.local);
             localStorage.setItem('userData', JSON.stringify(us));
             localStorage.setItem('currentUser', JSON.stringify(this.user));
             //  this.router.navigate([this.returnUrl]);
@@ -242,10 +246,11 @@ try {
        console.log(this.elemento);
        this.elementoModulo = <any>this.elemento;
       this.user = new User(this.elemento[0]['id'] , this.elemento[0]['email'], this.elemento[0]['nombreyapellido'],
-       this.elemento[0]['name'],'1',this.elemento[0]['email'], currentUser['access_token'],this.elementoModulo);
+       this.elemento[0]['name'],'1',this.elemento[0]['email'], currentUser['access_token'],this.elementoModulo, this.loginForm.value.local);
        this.username = userData['username'];
        localStorage.removeItem('userData');
        localStorage.setItem('userData', JSON.stringify(this.user));
+       this.local = userData['local'];
        this.asignarModulos(this.elementoModulo);
      // console.log(this.user);
         this.loading = false;
@@ -284,7 +289,7 @@ menuList(){
                 {label: 'Ventas', 'routerLink': 'facturacion/historia/venta'},
               ]
           },
-      {label: 'Historia clínica',visible:!this.control_total, 'routerLink': 'facturacion/historiaclinica'},
+      {label: 'Historia clínica',visible:!this.control_total, 'routerLink': 'historiaclinica'},
         
       ]
   },

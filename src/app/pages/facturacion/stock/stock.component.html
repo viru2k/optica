@@ -12,7 +12,7 @@
               <form  [formGroup]="DateForm">
               <div class="btn-group " role="group">
                       <span class="pr-1 pt-1"><h6>Fecha:</h6></span>
-          <p-calendar [inputStyle]="{'height':'29.1px'}"  [showTime]="true"  class="mr-2 " formControlName="fecha_desde"  (onSelect)="actualizarFechaDesde($event)" tabindex="0"  [dataType]="yy-mm-dd" [locale]="es" dateFormat="dd/mm/yy"   [readonlyInput]="true">
+          <p-calendar [inputStyle]="{'height':'29.1px'}"  [showTime]="true"  class="mr-2 " formControlName="fecha_desde"  (onSelect)="actualizarFechaDesde($event)" tabindex="0"  [locale]="es" dateFormat="dd/mm/yy"   [readonlyInput]="true">
              <ng-template pTemplate="date" let-date>
                   <span    style="border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">{{date.day}}</span>
               </ng-template> 
@@ -120,9 +120,9 @@
 
 
 <p-overlayPanel #op [showTransitionOptions]="'400ms'" [hideTransitionOptions]="'300ms'"  [dismissable]="true" >                          
-    <span>   <a class="nav-link azul text-info  my-hover" (click)="editarRegistro(selecteditems)">Editar registro</a></span>    
+    <span>   <a class="nav-link azul text-info  my-hover" (click)="editarRegistro()">Editar registro</a></span>    
     <span> <hr></span>
-    <span>   <a class="nav-link azul text-info my-hover" (click)="eliminarRegistro(selecteditems)">Eliminar registro</a></span>
+    <span>   <a class="nav-link azul text-info my-hover" (click)="eliminarRegistro()">Eliminar registro</a></span>
   </p-overlayPanel>  
   
   

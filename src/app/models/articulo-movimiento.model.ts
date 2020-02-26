@@ -22,6 +22,7 @@ export class ArticuloMovimiento {
     public articulo_codigo:string;
     public articulo_tipo:string;
     public cantidad:number;
+    public local:string;
 
     constructor( 
         id:string,
@@ -45,7 +46,8 @@ export class ArticuloMovimiento {
         articulo_nombre:string,
         articulo_codigo:string,
         articulo_tipo:string,
-        cantidad:number
+        cantidad:number,
+        local:string
         ) {
 
         this.id = id;
@@ -70,6 +72,6 @@ export class ArticuloMovimiento {
         this.articulo_codigo = articulo_codigo;
         this.articulo_tipo = articulo_tipo;
         this.cantidad = cantidad;
-
+        this.local = local;
    }
 }

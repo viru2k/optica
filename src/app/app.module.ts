@@ -55,7 +55,6 @@ import { NotFoundComponent } from './pages/info/not-found/not-found.component';
 import { VentaComponent } from './pages/facturacion/venta/venta.component';
 import { StockComponent } from './pages/facturacion/stock/stock.component';
 import { VentaHistoriaComponent } from './pages/facturacion/venta-historia/venta-historia.component';
-import { HistoriaClinicaComponent } from './pages/historia-clinica/historia-clinica.component';
 import { ArticuloTipoComponent } from './pages/mantenimiento/articulo/articulo-tipo/articulo-tipo.component';
 import { TipoComprobanteComponent } from './pages/mantenimiento/comprobante/tipo-comprobante/tipo-comprobante.component';
 import { PacienteComponent } from './pages/mantenimiento/paciente/paciente.component';
@@ -66,6 +65,16 @@ import { PopupComprobanteTipoComponent } from './shared/components/popup-comprob
 import { PopupArticuloEditarComponent } from './shared/components/popup-articulo-editar/popup-articulo-editar.component';
 import { PopupArticuloTipoComponent } from './shared/components/popup-articulo-tipo/popup-articulo-tipo.component';
 import { PopupArticuloTipoEditarComponent } from './shared/components/popup-articulo-tipo-editar/popup-articulo-tipo-editar.component';
+import { HistoriaClinicaComponent } from './pages/medico/historia-clinica/historia-clinica.component';
+import { PopupObraSocialMedicoComponent } from './pages/medico/popup-obra-social-medico/popup-obra-social-medico.component';
+import { PopupPacienteObrasocialComponent } from './shared/components/popups/popup-paciente-obrasocial/popup-paciente-obrasocial.component';
+import { PopupHistoriaClinicaRegistroComponent } from './shared/components/popups/popup-historia-clinica-registro/popup-historia-clinica-registro.component';
+import { PopupHistoriaClinicaRegistroNuevoComponent } from './shared/components/popups/popup-historia-clinica-registro-nuevo/popup-historia-clinica-registro-nuevo.component';
+import { HistoriaClinicaVisualizarComponent } from './pages/medico/historia-clinica/historia-clinica-visualizar/historia-clinica-visualizar.component';
+import { PacienteService } from './services/paciente.service';
+
+import ARS from '@angular/common/locales/es-AR';
+registerLocaleData(ARS, 'es-Ar');
 
 @NgModule({
   declarations: [
@@ -78,7 +87,6 @@ import { PopupArticuloTipoEditarComponent } from './shared/components/popup-arti
     VentaComponent,
     StockComponent,
     VentaHistoriaComponent,
-    HistoriaClinicaComponent,
     ArticuloTipoComponent,
     TipoComprobanteComponent,
     PacienteComponent,
@@ -88,10 +96,25 @@ import { PopupArticuloTipoEditarComponent } from './shared/components/popup-arti
     PopupComprobanteTipoComponent,
     PopupArticuloEditarComponent,
     PopupArticuloTipoComponent,
-    PopupArticuloTipoEditarComponent
+    PopupArticuloTipoEditarComponent,
+    HistoriaClinicaComponent,
+    PopupObraSocialMedicoComponent,
+    PopupPacienteObrasocialComponent,
+    PopupHistoriaClinicaRegistroNuevoComponent,
+    PopupHistoriaClinicaRegistroComponent,
+    HistoriaClinicaVisualizarComponent
+
   ],
   imports: [
-    BrowserModule,
+
+
+
+
+
+
+
+
+  BrowserModule,
     AppRoutingModule,
     FileUploadModule,
     BrowserModule,
@@ -127,8 +150,13 @@ import { PopupArticuloTipoEditarComponent } from './shared/components/popup-arti
     PopupArticuloEditarComponent,
     PopupPacienteComponent,
     PopupArticuloTipoComponent,
-    PopupArticuloTipoEditarComponent],
-  providers: [CurrencyPipe,{ provide: LOCALE_ID, useValue: 'es-Ar' },{
+    PopupArticuloTipoEditarComponent,
+    PopupObraSocialMedicoComponent,
+    PopupPacienteObrasocialComponent,
+    PopupHistoriaClinicaRegistroNuevoComponent,
+    PopupHistoriaClinicaRegistroComponent
+  ],
+  providers: [CurrencyPipe,DecimalPipe,PacienteService,{ provide: LOCALE_ID, useValue: 'es-Ar' },{
     provide: HTTP_INTERCEPTORS,
     useFactory: function(injector: Injector) {
         return new JwtInterceptor(injector);

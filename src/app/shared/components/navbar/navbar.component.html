@@ -8,7 +8,7 @@
             
                
       <div class="flexbox row" >                      
-       <div class=" float-right mr-3 mt-2">  <h6 class="text-secondary">Usuario : {{username}}</h6></div>                                             
+       <div class=" float-right mr-3 mt-2 row"> <h6 class="text-secondary mr-4">Local : {{local}}</h6> <h6 class="text-secondary ">Usuario : {{username}}</h6></div>                                             
 			  
 			  <div class="button mr-2"> 
                 <i #aa (click)="cerrarSesion()" class="fas fa-power-off fa-2x my-hover nav-links"></i>
@@ -44,9 +44,10 @@
 						<span class="focus-input100"></span>
 						<span class="label-input100" >Contraseña</span>
 					</div>
-
-				
-			
+					<div class="container-login100-form-btn mb-5" >
+						<div ><p-radioButton name="group1" class="mr-2" value="Capital" label="Capital" formControlName="local" inputId="opt1"></p-radioButton></div>
+						<div><p-radioButton name="group1" value="Caucete" label="Caucete"  formControlName="local" inputId="opt2"></p-radioButton></div>
+				</div>
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
@@ -62,5 +63,7 @@
 			</div>
 		</div>
 	</div>
+	
 </div>
+
 </div>

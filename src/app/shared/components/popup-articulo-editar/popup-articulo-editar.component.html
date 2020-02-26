@@ -62,7 +62,7 @@
           </form>
           <p-footer>
                   <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                          <button *ngIf="!newPopItem" [disabled]="!updateDataForm.valid" [formGroup]="updateDataForm" class="btn btn-primary" type="submit" (click)="guardarDatos()" >Guardar</button>
+                          <button  [disabled]="!updateDataForm.valid" [formGroup]="updateDataForm" class="btn btn-primary" type="submit" (click)="guardarDatos()" >Guardar</button>
                           
                   </div>
               </p-footer>

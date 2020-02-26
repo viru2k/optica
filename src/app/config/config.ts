@@ -1,17 +1,22 @@
 
  
   
-export const URL_SERVICIOS = 'http://localhost/api-optica/public/api/';
-export const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
-export const URL_ARCHIVO = 'http://localhost/api-optica/public/';
-//export const URL_SERVICIOS = 'http://messageserver/api-optica/public/api/'; 
-//export const config: SocketIoConfig = { url: 'http://messageserver:4444', options: {} };
-//export const URL_ARCHIVO = 'http://messageserver/api-optica/public/';
+//export const URL_SERVICIOS = 'http://localhost/api-optica/public/api/';
+//export const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
+//export const URL_ARCHIVO = 'http://localhost/api-optica/public/';
+//export const URL_SERVICIOS = 'http://192.168.100.25/api-optica/public/api/'; 
+//export const config: SocketIoConfig = { url: 'http://192.168.100.25:4444', options: {} };
+//export const URL_ARCHIVO = 'http://192.168.100.25/api-optica/public/';
 /***********SERVER DE PRUEBAS ********************** */
  
 //export const URL_SERVICIOS = 'http://messageserver/api-optica-prueba/public/api/'; 
 //export const config: SocketIoConfig = { url: 'http://messageserver:4444', options: {} };
 //export const URL_ARCHIVO = 'http://messageserver/api-optica/public/';
+
+
+export const URL_SERVICIOS = 'https://viaopticasj.com.ar/api-optica/public/api/'; 
+export const config: SocketIoConfig = { url: 'http://viaopticasj.com.ar:4444', options: {} };
+export const URL_ARCHIVO = 'https://viaopticasj.com.ar/api-optica/public/';
 export const VAPID_PUBLIC ='BNOJyTgwrEwK9lbetRcougxkRgLpPs1DX0YCfA5ZzXu4z9p_Et5EnvMja7MGfCqyFCY4FnFnJVICM4bMUcnrxWg'; // SIN USO
 
 

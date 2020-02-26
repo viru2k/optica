@@ -81,7 +81,7 @@ export class PopupArticuloComponent implements OnInit {
           let total:number = this.cantidad * Number(this.selectedItem.precio);
           console.log(this.selectedItem);
          let  movimiento= new ArticuloMovimiento('',this.selectedItem.id,'','',this.selectedItem.precio,0,'ACTIVO',
-          '1','CAPITAL','','0',total,0,0,'',userData['id'],'','',this.selectedItem.nombre,this.selectedItem.codigo,this.selectedItem.tipo_articulo,this.cantidad);
+          '1','CAPITAL','','0',total,0,0,'',userData['id'],'','',this.selectedItem.nombre,this.selectedItem.codigo,this.selectedItem.tipo_articulo,this.cantidad,userData['local']);
           this.ref.close(movimiento);
       }
     

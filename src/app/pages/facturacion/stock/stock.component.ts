@@ -127,15 +127,23 @@ export class StockComponent implements OnInit {
 
     console.log(this.comprobante);
     try {
-          this.comprobante = new Comprobante('0',this.DateForm.value.proximo_numero,total,0,0,_fechaDesde,'','ACTIVO',this.userData['id'],this.DateForm.value.tipo_id, this.DateForm.value.tipo,this.elementos);
+          this.comprobante = new Comprobante('0',this.DateForm.value.proximo_numero,total,0,0,_fechaDesde,'','ACTIVO',this.userData['id'],this.DateForm.value.tipo_id, this.DateForm.value.tipo,this.elementos,this.userData['local']);
       this.service.crearComprobante(this.comprobante)
       .subscribe(resp => {
         console.log(resp);    
-        this.DateForm.patchValue({tipo: resp[0].tipo});
-        this.DateForm.patchValue({tipo_id: resp[0].id});
-        this.DateForm.patchValue({proximo_numero: resp[0].proximo_numero});
+      //  this.DateForm.patchValue({tipo: resp[0].tipo});
+      //  this.DateForm.patchValue({tipo_id: resp[0].id});
+       // this.DateForm.patchValue({proximo_numero: resp[0].proximo_numero});
           this.loading = false;
           this.elementos = [];
+          swal({
+            toast: false,
+            type: 'success',
+            title: 'Guardado',
+            text: 'Movimiento guardado' ,
+            showConfirmButton: false,
+            timer: 2000
+          });
       },
       error => { // error path
           console.log(error.message);

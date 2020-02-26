@@ -25,8 +25,8 @@ export class ArticuloService {
     return this.http.get<ArticuloMovimiento[]>(this.url+'facturacion/comprobante/by/numero?id='+id);
   }
 
-  getMovimientoByComprobanteFecha(fecha_desde:String, fecha_hasta:string){
-    return this.http.get<Comprobante[]>(this.url+'facturacion/comprobante/tipo');
+  getMovimientoByComprobanteFecha(fecha_desde:String, fecha_hasta:string,local:String){
+    return this.http.get<ArticuloMovimiento[]>(this.url+'facturacion/comprobante/by/fecha?fecha_desde='+fecha_desde+'&fecha_hasta='+fecha_hasta+'&local='+local);
   }
 
   getComprobanteTipo(){

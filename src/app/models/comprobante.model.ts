@@ -14,7 +14,7 @@ export class Comprobante {
     public comprobante_tipo_id:string;
     public comprobante_tipo:string;
     public articuloMovimiento:ArticuloMovimiento[];
-
+    public  local:string;
     constructor( 
     id:string,
     numero:string,
@@ -27,7 +27,8 @@ export class Comprobante {
     usuario_alta_id:string,
     comprobante_tipo_id:string,
     comprobante_tipo:string,
-    articuloMovimiento:ArticuloMovimiento[]
+    articuloMovimiento:ArticuloMovimiento[],
+    local:string
         ) {
 
     this.id = id;
@@ -42,6 +43,6 @@ export class Comprobante {
     this.comprobante_tipo_id = comprobante_tipo_id;
     this.comprobante_tipo = comprobante_tipo;
     this.articuloMovimiento = articuloMovimiento;
-
+    this.local = local;
    }
 }
