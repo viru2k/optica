@@ -44,7 +44,7 @@
     "hover.css": "^2.3.2",
     "html2canvas": "^1.0.0-alpha.12",
     "jquery": "^3.4.1",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "jspdf-autotable": "^2.3.5",
     "moment": "^2.22.2",
     "ng2-pdf-viewer": "^5.3.2",
